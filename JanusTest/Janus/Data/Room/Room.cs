@@ -35,12 +35,13 @@ namespace JanusTest.Janus.Data.Room
 
         public CreateRoomRequest(string id, string description, string adminKey, string token)
         {
-            Body = new RoomPayload();
-
-            Body.AdminKey = adminKey;
-            Body.Room = id;
-            Body.Description = description;
-            Body.Allowed = new string[] { token };
+            Body = new RoomPayload
+            {
+                AdminKey = adminKey,
+                Room = id,
+                Description = description,
+                Allowed = new string[] { token }
+            };
         }
     }
 

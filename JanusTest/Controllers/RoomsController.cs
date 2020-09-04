@@ -27,16 +27,12 @@ namespace JanusTest.Controllers
         {
             var client = new JanusClient(new System.Net.Http.HttpClient(), new JanusOptions
             {
-                JanusApiUrl = "https://83d2d00f6e1b.ngrok.io/anus/janus",
+                JanusApiUrl = "http://localhost:8088/janus",
                 AdminKey = "supersecret",
                 AdminSecret = "janusoverlord"
             });
 
-            var room = await client.CreateRoomAsync(new Janus.Data.Room.Room
-            {
-                Description = "new description",
-                Id = Guid.NewGuid().ToString()
-            }, _userManager.GetUserId(User));
+            var room = await client.CreateRoomAsync(Guid.NewGuid().ToString(), "new description");
 
             return Ok(room);
         }
